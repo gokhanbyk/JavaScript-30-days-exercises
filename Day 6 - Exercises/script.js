@@ -365,3 +365,91 @@ for (let i = 0; i < fullStack.length; i++) {
 }
 
 // LEVEL 3
+
+/*
+const countries = [
+    'Albania',
+    'Bolivia',
+    'Canada',
+    'Denmark',
+    'Ethiopia',
+    'Finland',
+    'Germany',
+    'Hungary',
+    'Ireland',
+    'Japan',
+    'Kenya'
+]
+*/
+
+const countriesCopy = [
+    'Albania',
+    'Bolivia',
+    'Canada',
+    'Denmark',
+    'Ethiopia',
+    'Finland',
+    'Germany',
+    'Hungary',
+    'Ireland',
+    'Japan',
+    'Kenya',
+    'Iceland'
+]
+
+const sortedCountries = countriesCopy.sort()
+console.log(sortedCountries);
+
+const sortedWebTechs = webTechs.sort()
+console.log(sortedWebTechs);
+
+const sortedMenStack = mernStack.sort()
+console.log(sortedMenStack);
+
+let withLandCountries = []
+
+for (let i = 0; i < countriesData.length; i++) {
+    if (countriesData[i].includes('land')) {
+        withLandCountries.push(countriesData[i])
+    }   
+}
+console.log(withLandCountries); // ['Finland', 'Iceland', 'Ireland', 'Marshall Islands', 'Netherlands', 'New Zealand', 'Poland', 'Solomon Islands', 'Swaziland', 'Switzerland', 'Thailand']
+
+maxLength = 0
+let longestWordCountry = ''
+
+for(let i = 0; i < countriesData.length; i++) {
+    if (countriesData[i].length > maxLength) {
+        maxLength = countriesData[i].length
+        longestWordCountry = countriesData[i]
+    }
+}
+console.log(longestWordCountry); // Central African Republic
+
+let onlyFourCharCountries = []
+
+for (let i = 0; i < countriesData.length; i++) {
+    if (countriesData[i].length == 4) {
+        onlyFourCharCountries.push(countriesData[i])
+    }
+}
+console.log(onlyFourCharCountries); // ['Chad', 'Cuba', 'Fiji', 'Iran', 'Iraq', 'Laos', 'Mali', 'Oman', 'Peru', 'Togo']
+
+let twoOrMoreWordCountries = []
+
+for(let i = 0; i < countriesData.length; i++) {
+    let words = countriesData[i].split(' ')
+    if (words.length >= 2) {
+        twoOrMoreWordCountries.push(countriesData[i])
+    }
+}
+
+console.log(twoOrMoreWordCountries);
+
+let reverseCountriesData = []
+
+for (let i = countriesData.length - 1; i >= 0; i--) {
+    reverseCountriesData.push(countriesData[i].toUpperCase())
+    reverseCountriesData.sort()
+}
+console.log(reverseCountriesData); 
