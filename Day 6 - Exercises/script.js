@@ -173,3 +173,195 @@ console.log(id);
 console.log('***********');
 
 // LEVEL 2
+
+let randomLength = Math.round(Math.random() * 30)
+id = ''
+
+for (let i = 0; i < randomLength; i++) {
+    let randomIndex = Math.round(Math.random() * characters.length)
+    id += characters.charAt(randomIndex)
+}
+console.log(id);
+
+console.log('***********');
+
+let hexadecimalValues = '0123456789ABCDEFabcdef'
+let hexadecimal = ''
+
+randomLength = Math.round(Math.random() * (8 - 3 + 1) + 3)
+for (let i = 0; i < 6; i++) { //randomlength is also works but ı prefer using 6
+    let randomIndex = Math.round(Math.random() * hexadecimalValues.length)
+    hexadecimal += hexadecimalValues.charAt(randomIndex)
+}
+let hexadecimalColor = '#' + hexadecimal
+console.log(hexadecimalColor);
+document.body.style.backgroundColor = hexadecimalColor
+
+console.log('***********');
+
+
+let randomRgbColor = []
+
+for (let i = 0; i < 3; i++) {
+    let randomRgb = Math.round(Math.random() * 255)
+    randomRgbColor.push(randomRgb)
+}
+console.log(`rgb(${randomRgbColor[0]}, ${randomRgbColor[1]}, ${randomRgbColor[2]})`)
+let rgbColor = `rgb(${randomRgbColor[0]}, ${randomRgbColor[1]}, ${randomRgbColor[2]})`
+
+const h1 = document.querySelector('h1')
+h1.style.color = rgbColor
+
+console.log('***********');
+let newCountries = []
+for (let i = 0; i < countries.length; i++) {
+    newCountries.push(countries[i].toUpperCase())
+}
+console.log(newCountries);  // ["ALBANIA", "BOLIVIA", "CANADA", "DENMARK", "ETHIOPIA", "FINLAND", "GERMANY", "HUNGARY", "IRELAND", "JAPAN", "KENYA"]
+
+let countriesLength = []
+for (let i = 0; i < countries.length; i++) {
+    countriesLength.push(countries[i].length)
+}
+console.log(countriesLength); // [7, 7, 6, 7, 8, 7, 7, 7, 7, 5, 5]
+
+let countriesOfArrays = []
+for (let i = 0; i < countries.length; i++) {
+    countriesOfArrays.push([countries[i], newCountries[i].slice(0, 3), countriesLength[i]])
+}
+console.log(countriesOfArrays);
+/*
+  [
+  ['Albania', 'ALB', 7],
+  ['Bolivia', 'BOL', 7],
+  ['Canada', 'CAN', 6],
+  ['Denmark', 'DEN', 7],
+  ['Ethiopia', 'ETH', 8],
+  ['Finland', 'FIN', 7],
+  ['Germany', 'GER', 7],
+  ['Hungary', 'HUN', 7],
+  ['Ireland', 'IRE', 7],
+  ['Iceland', 'ICE', 7],
+  ['Japan', 'JAP', 5],
+  ['Kenya', 'KEN', 5]
+]
+*/
+
+console.log('***********');
+countries.push('Iceland')
+
+let landCountries = []
+for (let i = 0; i < countries.length; i++) {
+    if (countries[i].includes('land')) {
+        landCountries.push(countries[i])
+    }
+}
+if (landCountries.length > 0) {
+    console.log(landCountries); // ['Finland','Ireland', 'Iceland']
+} else {
+    console.log('All these countries are without land');
+}
+
+console.log('***********');
+
+let endsWithIaCountries = []
+let withoutIa = []
+for (let i = 0; i < countries.length; i++) {
+    if (countries[i].endsWith('ia')) {
+        endsWithIaCountries.push(countries[i])
+    }
+    if (!countries[i].endsWith('ai')) {
+        withoutIa.push(countries[i])
+    }
+}
+console.log(`These are countries ends without ia = ${withoutIa}`);
+console.log(endsWithIaCountries); // ['Albania', 'Bolivia','Ethiopia']
+
+console.log('***********');
+
+let maxLength = 0
+let biggestCountry = ''
+
+for (let i = 0; i < countries.length; i++) {
+    if (countries[i].length > maxLength) {
+        maxLength = countries[i].length
+        biggestCountry = countries[i]
+    }
+}
+console.log(biggestCountry); // Ethiopia
+
+console.log('***********');
+
+let onlyFiveCharCountries = []
+for (let i = 0; i < countries.length; i++) {
+    if (countries[i].length == 5) {
+        onlyFiveCharCountries.push(countries[i])
+    }
+}
+console.log(onlyFiveCharCountries); // ['Japan', 'Kenya']
+
+console.log('***********');
+
+let longestWord = ''
+maxLength = 0
+
+for (let i = 0; i < webTechs.length; i++) {
+    if (webTechs[i].length > maxLength) {
+        maxLength = webTechs[i].length
+        longestWord = webTechs[i]
+    }
+}
+console.log(longestWord); // JavaScript
+
+console.log('***********');
+
+let webTechsOfArrays = []
+
+for (let i = 0; i < webTechs.length; i++) {
+    webTechsOfArrays.push([webTechs[i], webTechs[i].length])
+}
+console.log(webTechsOfArrays); // [["HTML", 4], ["CSS", 3],["JavaScript", 10],["React", 5],["Redux", 5],["Node", 4],["MongoDB", 7]]
+
+console.log('***********');
+
+console.log(mernStack); // (4) ['MongoDB', 'Express', 'React', 'Node']
+let acronym = ''
+
+for (let i = 0; i < mernStack.length; i++) {
+    let word = mernStack[i]
+    acronym += word[0].toUpperCase()
+}
+console.log(acronym) // MERN
+
+console.log('***********');
+
+webTechs.push('Express')
+
+for (const tech of webTechs) {
+    console.log(tech);
+}
+
+console.log('***********');
+
+const fruit = ['banana', 'orange', 'mango', 'lemon']
+let reverseFruit = []
+console.log(fruit);
+for (let i = fruit.length - 1; i >= 0; i--) {
+    reverseFruit.push(fruit[i])
+}
+console.log(reverseFruit);
+
+console.log('***********');
+
+const fullStack = [
+    ['HTML', 'CSS', 'JS', 'React'],
+    ['Node', 'Express', 'MongoDB']
+]
+
+for (let i = 0; i < fullStack.length; i++) {
+    for(let j = 0; j < fullStack[i].length; j++) {
+        console.log(fullStack[i][j].toUpperCase());
+    }
+}
+
+// LEVEL 3
