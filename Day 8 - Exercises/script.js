@@ -103,3 +103,215 @@ console.log(countriesPrint(countries)) // Country name: Afghanistan, capital: Ka
 
 
 // LEVEL 3
+
+const personAccount = {
+    firstName: 'Gökhan',
+    lastName: 'Bıyıkoğlu',
+    incomes: [],
+    expenses: [],
+    totalIncome: function () {
+        let total = 0
+        for (const income of this.incomes) {
+            total += income.amount
+        }
+        return total
+    },
+    totalExpenses: function () {
+        let total = 0
+        for (const expense of this.expenses) {
+            total += expense.amount
+        }
+        return total
+    },
+    accountInfo: function () {
+        return `Name: ${this.firstName} ${this.lastName}\nTotal Income: ${this.totalIncome()}\nTotal Expenses: ${this.totalExpenses()}`
+    },
+    addIncome: function (amount) {
+        this.incomes.push({ amount })
+    },
+    addExpense: function (amount) {
+        this.expenses.push({ amount })
+    },
+    accountBalance: function () {
+        const balance = this.totalIncome() - this.totalExpenses()
+        return `Account Balance: ${balance}`
+    }
+}
+
+personAccount.addIncome(5000)
+personAccount.addIncome(10000)
+personAccount.addExpense(3000)
+
+console.log(personAccount.accountInfo()) // Name: Gökhan Bıyıkoğlu Total Income: 15000 Total Expenses: 3000
+console.log(personAccount.accountBalance()) // Account Balance: 12000
+
+
+const usersX = [
+    {
+        _id: 'ab12ex',
+        username: 'Alex',
+        email: 'alex@alex.com',
+        password: '123123',
+        createdAt: '08/01/2020 9:00 AM',
+        isLoggedIn: false
+    },
+    {
+        _id: 'fg12cy',
+        username: 'Asab',
+        email: 'asab@asab.com',
+        password: '123456',
+        createdAt: '08/01/2020 9:30 AM',
+        isLoggedIn: true
+    },
+    {
+        _id: 'zwf8md',
+        username: 'Brook',
+        email: 'brook@brook.com',
+        password: '123111',
+        createdAt: '08/01/2020 9:45 AM',
+        isLoggedIn: true
+    },
+    {
+        _id: 'eefamr',
+        username: 'Martha',
+        email: 'martha@martha.com',
+        password: '123222',
+        createdAt: '08/01/2020 9:50 AM',
+        isLoggedIn: false
+    },
+    {
+        _id: 'ghderc',
+        username: 'Thomas',
+        email: 'thomas@thomas.com',
+        password: '123333',
+        createdAt: '08/01/2020 10:00 AM',
+        isLoggedIn: false
+    }
+];
+
+const products = [
+    {
+        _id: 'eedfcf',
+        name: 'mobile phone',
+        description: 'Huawei Honor',
+        price: 200,
+        ratings: [
+            { userId: 'fg12cy', rate: 5 },
+            { userId: 'zwf8md', rate: 4.5 }
+        ],
+        likes: []
+    },
+    {
+        _id: 'aegfal',
+        name: 'Laptop',
+        description: 'MacPro: System Darwin',
+        price: 2500,
+        ratings: [],
+        likes: ['fg12cy']
+    },
+    {
+        _id: 'hedfcg',
+        name: 'TV',
+        description: 'Smart TV:Procaster',
+        price: 400,
+        ratings: [{ userId: 'fg12cy', rate: 5 }],
+        likes: ['fg12cy']
+    }
+]
+
+function signUp() {
+    let userName = prompt('Sign up', 'Username')
+    let password = Number(prompt('Sign up', 'password'))
+    for (const user in usersX) {
+        let exist = usersX[user].username
+        if (exist.includes(userName)) {
+            return 'This account has already exist'
+        } else {
+            usersX.newUser = {
+                username: userName,
+                password: password
+            }
+            return 'sign up succesfully'
+        }
+    }
+}
+console.log(signUp())
+console.log(usersX);
+
+function signIn() {
+    let userName = prompt('Sign in', 'Username')
+    let password = Number(prompt('Sign in', 'password'))
+    for (const user in usersX) {
+        let userUsername = usersX[user].username
+        let userPassword = usersX[user].password
+        if (userUsername === userName && userPassword == password) {
+            if (usersX[user].isLoggedIn === true) {
+                return 'user has already signed in'
+            } else {
+                usersX[user].isLoggedIn = true;
+                return 'Sign in succesfully'
+            }
+        }
+    }
+    return 'invalid username or password'
+}
+
+console.log(signIn())
+console.log(usersX);
+
+
+
+function rateProduct() {
+    let productName = prompt('Product Name:', 'Laptop')
+    let rate = Number(prompt('Rate the product', '5'))
+    for (const product in products) {
+        let name = products[product].name
+        let rating = products[product].ratings
+        if (productName === name && rating.length === 0) {
+            products[product].ratings.push(rate)
+            return 'Your rating has been saved'
+        }
+    }
+    return 'invalid product name'
+}
+console.log(rateProduct())
+console.log(products[1])
+
+function averageRating() {
+    let productName = prompt('Product name', 'TV')
+    for (const product of products) {
+        if (product.name === productName) {
+            const ratings = product.ratings;
+            if (ratings.length === 0) {
+                return 'No ratings yet.';
+            } 
+            let sum = 0;
+            for (const rating of ratings) {
+                sum += rating.rate
+            const average = sum / ratings.length;
+            return average.toFixed(1);
+        }
+        }
+    }
+    return 'Invalid product name.';
+}
+console.log(averageRating());
+
+
+function likedProduct() {
+    let productName = prompt('Product name', 'mobile phone')
+    for (const product of products) {
+        if (productName === product.name) {
+          const likedIndex = product.likes.indexOf('fg12cy')
+          if (likedIndex === -1) {
+            product.likes.push('fg12cy')
+            return 'Product liked.'
+          } else {
+            product.likes.splice(likedIndex, 1)
+            return 'Product unliked.'
+          }
+        }
+      }
+      return 'Product not found.'
+}
+console.log(likedProduct())
