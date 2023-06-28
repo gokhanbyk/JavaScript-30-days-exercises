@@ -122,3 +122,111 @@ console.log(isRussia) // -1
 
 
 // LEVEL 2
+
+
+
+const totalPrice = products.filter(product => product.price > 5).map(product => product.price).reduce((acc, price) => acc + price, 0)
+
+console.log(totalPrice) // 24
+
+const reducePrice = products.reduce((acc, product) => acc + product.price, 0)
+console.log(reducePrice) // 
+
+
+function categorizeCountries(pattern) {
+
+  const categorizedCountries = countries.filter(country => String(country).toLowerCase().includes(pattern.toLowerCase()))
+
+  return categorizedCountries
+}
+
+// Example usage
+const pattern = 'land'
+const categorizedCountries = categorizeCountries(pattern)
+
+console.log(`Countries with the pattern '${pattern}':`, categorizedCountries)
+
+
+// function getLetterCount() {
+//   const letterCount = {};
+
+//   countries.forEach(country => {
+//     // const firstLetter = country.charAt(0).toUpperCase();
+
+//     if (letterCount[firstLetter]) {
+//       letterCount[firstLetter]++;
+//     } else {
+//       letterCount[firstLetter] = 1;
+//     }
+//   });
+
+//   const result = Object.entries(letterCount).map(([letter, count]) => ({
+//     letter,
+//     count
+//   }));
+
+//   return result;
+// }
+
+// const letterCounts = getLetterCount();
+// console.log('Letter Counts:', letterCounts);
+
+
+function first10country() {
+  let sirala = countries.sort()
+
+  for (let i = 0; i < 10; i++) {
+    console.log(sirala[i])
+  }
+
+}
+
+first10country()
+
+function last10Country() {
+  let sirala = countries.sort((a, b) => b.name.localeCompare(a.name))
+
+  for (let i = 0; i < 10; i++) {
+    console.log(sirala[i])
+  }
+}
+
+last10Country()
+
+
+
+// function getMostFrequentInitialLetter() {
+//   const letterCount = {}
+
+//   countries.forEach(country => {
+//     const firstLetter = country.charAt(0).toUpperCase()
+
+//     if (letterCount[firstLetter]) {
+//       letterCount[firstLetter]++
+//     } else {
+//       letterCount[firstLetter] = 1
+//     }
+//   })
+
+//   let maxCount = 0
+//   let mostFrequentLetter = ''
+
+//   for (const letter in letterCount) {
+//     if (letterCount.hasOwnProperty(letter)) {
+//       const count = letterCount[letter]
+
+//       if (count > maxCount) {
+//         maxCount = count
+//         mostFrequentLetter = letter
+//       }
+//     }
+//   }
+
+//   return mostFrequentLetter
+// }
+
+// const mostFrequentInitialLetter = getMostFrequentInitialLetter()
+// console.log('Most Frequent Initial Letter:', mostFrequentInitialLetter)
+
+
+// LEVEL 3
