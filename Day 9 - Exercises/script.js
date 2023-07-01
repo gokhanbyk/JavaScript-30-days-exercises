@@ -308,3 +308,117 @@ function mostPopulatedCountries(countries, x) {
   }
 }
 mostPopulatedCountries(countries, 10)
+
+const statistics = {
+  data: [],
+
+  addData(data) {
+    this.data = this.data.concat(data);
+  },
+
+  count() {
+    return this.data.length;
+  },
+
+  sum() {
+    return this.data.reduce((acc, val) => acc + val, 0);
+  },
+
+  min() {
+    return Math.min(...this.data);
+  },
+
+  max() {
+    return Math.max(...this.data);
+  },
+
+  range() {
+    return this.max() - this.min();
+  },
+
+  mean() {
+    return this.sum() / this.count();
+  },
+
+  median() {
+    const sortedData = this.data.sort((a, b) => a - b);
+    const mid = Math.floor(this.count() / 2);
+
+    if (this.count() % 2 === 0) {
+      return (sortedData[mid - 1] + sortedData[mid]) / 2;
+    } else {
+      return sortedData[mid];
+    }
+  },
+
+  mode() {
+    const freqMap = {};
+    let maxCount = 0;
+    let mode = null;
+
+    for (const num of this.data) {
+      freqMap[num] = freqMap[num] ? freqMap[num] + 1 : 1;
+
+      if (freqMap[num] > maxCount) {
+        maxCount = freqMap[num];
+        mode = num;
+      }
+    }
+
+    return { mode, count: maxCount };
+  },
+
+  var() {
+    const mean = this.mean();
+    const squaredDifferencesSum = this.data.reduce((acc, val) => acc + (val - mean) ** 2, 0);
+    return squaredDifferencesSum / this.count();
+  },
+
+  std() {
+    return Math.sqrt(this.var());
+  },
+
+  percentile(p) {
+    const sortedData = this.data.sort((a, b) => a - b);
+    const index = (p / 100) * (this.count() - 1);
+    const lowerIndex = Math.floor(index);
+    const upperIndex = Math.ceil(index);
+
+    if (lowerIndex === upperIndex) {
+      return sortedData[lowerIndex];
+    } else {
+      const lowerValue = sortedData[lowerIndex];
+      const upperValue = sortedData[upperIndex];
+      return lowerValue + (upperValue - lowerValue) * (index - lowerIndex);
+    }
+  },
+
+  freqDist() {
+    const freqMap = {};
+    for (const num of this.data) {
+      freqMap[num] = freqMap[num] ? freqMap[num] + 1 : 1;
+    }
+
+    const freqDist = Object.entries(freqMap).map(([value, count]) => [count, parseInt(value)]);
+    freqDist.sort((a, b) => b[0] - a[0]);
+
+    return freqDist;
+  },
+};
+
+const ages = [31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37, 31, 34, 24, 33, 29, 26];
+
+statistics.addData(ages);
+
+console.log('Count:', statistics.count()); // 25
+console.log('Sum: ', statistics.sum()); // 744
+console.log('Min: ', statistics.min()); // 24
+console.log('Max: ', statistics.max()); // 38
+console.log('Range: ', statistics.range()); // 14
+console.log('Mean: ', statistics.mean()); // 29.76
+console.log('Median: ', statistics.median()); // 29
+console.log('Mode: ', statistics.mode()); // { mode: 26, count: 5 }
+console.log('Variance: ', statistics.var()); // 17.01
+console.log('Standard Deviation: ', statistics.std()); // 4.12
+console.log('Percentile (75th): ', statistics.percentile(75)); // 33
+console.log('Frequency Distribution: ', statistics.freqDist()); // [[5, 26], [4, 27], [4, 32], [3, 37], [2, 34], [2, 33], [2, 31], [2, 24], [1, 38], [1, 29], [1, 25]]
