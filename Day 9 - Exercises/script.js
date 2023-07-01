@@ -260,3 +260,17 @@ function countriesByName() {
 countriesByName()
 
 console.log('****')
+
+function countriesByPopulation() {
+  let sortedCountries = countries.sort((a, b) => a.population - b.population)
+
+  // for(let i in sortedCountries) {
+  //   console.log(sortedCountries[i])
+  // }
+  for (let i = 0; i < 5; i++) {
+    console.log(sortedCountries[i])
+  }
+}
+countriesByPopulation()
+
+console.log('****')
