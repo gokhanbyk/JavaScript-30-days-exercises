@@ -422,3 +422,5 @@ console.log('Variance: ', statistics.var()); // 17.01
 console.log('Standard Deviation: ', statistics.std()); // 4.12
 console.log('Percentile (75th): ', statistics.percentile(75)); // 33
 console.log('Frequency Distribution: ', statistics.freqDist()); // [[5, 26], [4, 27], [4, 32], [3, 37], [2, 34], [2, 33], [2, 31], [2, 24], [1, 38], [1, 29], [1, 25]]
+
+// END OF DAY 9
