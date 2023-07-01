@@ -298,3 +298,13 @@ function mostSpokenLanguages(countries, limit) {
   return languagesArray.slice(0, limit);
 }
 console.log(mostSpokenLanguages(countries, 5))
+
+
+function mostPopulatedCountries(countries, x) {
+  let sortedCountries = countries.sort((a, b) => b.population - a.population)
+
+  for (let i = 0; i < x; i++) {
+    console.log(`name: ${sortedCountries[i].name} -> population: ${sortedCountries[i].population}`)
+  }
+}
+mostPopulatedCountries(countries, 10)
