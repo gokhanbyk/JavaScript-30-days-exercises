@@ -246,3 +246,17 @@ function countriesByCapital() {
 countriesByCapital()
 
 console.log('****');
+
+function countriesByName() {
+  let sortedCountries = countries.sort((a, b) => a.name.localeCompare(b.name))
+
+  // for(let i in sortedCountries) {
+  //   console.log(sortedCountries[i])
+  // }
+  for (let i = 0; i < 5; i++) {
+    console.log(sortedCountries[i])
+  }
+}
+countriesByName()
+
+console.log('****')
