@@ -274,3 +274,27 @@ function countriesByPopulation() {
 countriesByPopulation()
 
 console.log('****')
+
+function mostSpokenLanguages(countries, limit) {
+  const languageCounts = {};
+
+  for (const country of countries) {
+    for (const language of country.languages) {
+      if (languageCounts[language]) {
+        languageCounts[language]++;
+      } else {
+        languageCounts[language] = 1;
+      }
+    }
+  }
+
+  const languagesArray = Object.entries(languageCounts).map(([country, count]) => ({
+    country,
+    count
+  }));
+
+  languagesArray.sort((a, b) => b.count - a.count);
+
+  return languagesArray.slice(0, limit);
+}
+console.log(mostSpokenLanguages(countries, 5))
