@@ -230,3 +230,19 @@ last10Country()
 
 
 // LEVEL 3
+
+console.log('****');
+
+function countriesByCapital() {
+  let sortedCountries = countries.sort((a, b) => a.capital.localeCompare(b.capital))
+
+  // for(let i in sortedCountries) {
+  //   console.log(sortedCountries[i])
+  // }
+  for (let i = 0; i < 5; i++) {
+    console.log(sortedCountries[i])
+  }
+}
+countriesByCapital()
+
+console.log('****');
