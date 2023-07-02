@@ -50,3 +50,35 @@ for(const number of b) {
     }
 }
 console.log(result) // (2) [4, 5]
+
+// LEVEL 3
+
+let countriesSet = new Set(countries)
+console.log(countriesSet) // Set(250) {{…}, {…}, {…}, {…}, {…}, …}
+
+function mostSpokenLanguages(countries, x) {
+    let languageCounts = new Map()
+  
+    for (let i = 0; i < countries.length; i++) {
+      const languages = countries[i].languages
+  
+      for (const lang of languages) {
+        if (languageCounts.has(lang)) {
+          languageCounts.set(lang, languageCounts.get(lang) + 1)
+        } else {
+          languageCounts.set(lang, 1)
+        }
+      }
+    }
+  
+    const countsArray = Array.from(languageCounts, ([language, count]) => ({
+      language: language,
+      count: count,
+    }))
+  
+    countsArray.sort((a, b) => b.count - a.count);
+  
+    return countsArray.slice(0, x);
+  }
+  
+  console.log(mostSpokenLanguages(countries, 10));
