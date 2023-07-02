@@ -21,3 +21,32 @@ console.log(setOfNames) // Set(5) {'Gökhan', 'Yiğit', 'Arda', 'Şakir', 'Mehm
 const countriesMap = [['Turkey', 'Ankara'], ['Finland', 'Helsinki'], ['Italy', 'Rome']]
 const mapOfCountries = new Map(countriesMap)
 console.log(mapOfCountries) // Map(3) {'Turkey' => 'Ankara', 'Finland' => 'Helsinki', 'Italy' => 'Rome'}
+
+// LEVEL 2
+
+const a = [4, 5, 8, 9]
+const b = [3, 4, 5, 7]
+const c = [...a, ...b]
+
+let A = new Set(a)
+let B = new Set(b)
+let C = new Set(c)
+// Union of sets
+console.log(C) // Set(6) {4, 5, 8, 9, 3, …}
+
+let d = a.filter((num) => B.has(num))
+let D = new Set(d)
+
+// Intersection
+console.log(D) // Set(2) {4, 5}
+
+//find a with b
+let newA = new Set(a)
+let result = []
+
+for(const number of b) {
+    if(newA.has(number)) {
+        result.push(number)
+    }
+}
+console.log(result) // (2) [4, 5]
