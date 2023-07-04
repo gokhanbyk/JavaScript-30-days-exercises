@@ -46,3 +46,27 @@ is_valid_variable('1first_name') // False
 is_valid_variable('firstname') // True
 
 // LEVEL 2 
+
+function tenMostFrequentWords(paragraph) {
+    const sanitizedParagraph = paragraph.replace(/[^\w\s]/g, '').toLowerCase()
+
+    const words = sanitizedParagraph.split(/\s+/)
+    const wordFrequencies = {}
+  
+    for (const word of words) {
+      wordFrequencies[word] = (wordFrequencies[word] || 0) + 1
+    }
+  
+    const wordFrequencyArray = Object.entries(wordFrequencies).map(([word, count]) => ({ word, count }))
+  
+    wordFrequencyArray.sort((a, b) => b.count - a.count)
+  
+    return wordFrequencyArray.slice(0, 10)
+}
+  
+const paragraph = `I love teaching. If you do not love teaching what else can you love. I love Python if you do not love something which can give you all the capabilities to develop an application what else can you love.`
+
+console.log(tenMostFrequentWords(paragraph))
+
+
+// LEVEL 3
