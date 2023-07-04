@@ -70,3 +70,27 @@ console.log(tenMostFrequentWords(paragraph))
 
 
 // LEVEL 3
+
+function cleanText(text) {
+    const cleanedText = text.replace(/[^\w\s]/g, '')
+  
+    const words = cleanedText.split(/\s+/)
+  
+    const wordFrequencies = {}
+  
+    for (const word of words) {
+      wordFrequencies[word] = (wordFrequencies[word] || 0) + 1
+    }
+  
+    const wordFrequencyArray = Object.entries(wordFrequencies).map(([word, count]) => ({ word, count }))
+  
+    wordFrequencyArray.sort((a, b) => b.count - a.count)
+  
+    const topThreeWords = wordFrequencyArray.slice(0, 3)
+  
+    return topThreeWords
+}
+  
+const sentence = `%I $am@% a %tea@cher%, &and& I lo%#ve %tea@ching%;. There $is nothing; &as& mo@re rewarding as educa@ting &and& @emp%o@wering peo@ple. ;I found tea@ching m%o@re interesting tha@n any other %jo@bs. %Do@es thi%s mo@tivate yo@u to be a tea@cher!?`
+
+console.log(cleanText(sentence))
