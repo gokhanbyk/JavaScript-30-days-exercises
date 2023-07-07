@@ -36,3 +36,11 @@ console.groupEnd()
 
 
 // LEVEL 2
+
+console.assert(10 > 2 * 10, '10 is not greater than 20') // Assertion failed: 10 is not greater than 20
+
+console.warn('Your username or password is wrong')
+console.error('Wrong password')
+
+
+// LEVEL 3
