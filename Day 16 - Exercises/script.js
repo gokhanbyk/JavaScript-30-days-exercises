@@ -159,3 +159,27 @@ console.log(studentOnlyJSON)
 
 
 // LEVEL 3
+
+let txtJSON = JSON.parse(txt)
+console.log(txtJSON) 
+
+let mostSkillTxtJSON = JSON.parse(txt, (key, value) => {
+    if(key === "skills") {
+        return value.length
+    }
+    return value
+})
+
+let maxSkills = 0
+let userWithMaxSkills 
+
+for(const user in mostSkillTxtJSON) {
+    if(mostSkillTxtJSON.hasOwnProperty(user)) {
+        const skillsCount = mostSkillTxtJSON[user].skills
+        if(skillsCount > maxSkills) {
+            maxSkills = skillsCount
+            userWithMaxSkills = user
+        }
+    }
+}
+console.log('User: ' + userWithMaxSkills) // User: Asab
