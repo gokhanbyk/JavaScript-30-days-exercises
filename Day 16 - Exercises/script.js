@@ -139,3 +139,23 @@ console.log(studentJSON)
 
 
 // LEVEL 2
+
+let studentOnlyJSON = JSON.stringify(student, ['firstName', 'lastName', 'skills'], 3)
+console.log(studentOnlyJSON)
+/*
+{
+   "firstName": "Asabeneh",
+   "lastName": "Yetayehe",
+   "skills": [
+      "HTML",
+      "CSS",
+      "JS",
+      "React",
+      "Node",
+      "Python"
+   ]
+}
+*/
+
+
+// LEVEL 3
